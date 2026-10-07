@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Todo List</title>
+</head>
+
+<body>
+
+    <h1>My Todo List</h1>
+
+    {% for task in tasks %}
+
+        <p>
+            {{ task.title }}
+
+            {% if task.completed %}
+                ✅
+            {% else %}
+                ❌
+                <a href="{% url 'complete_task' task.id %}">
+                    Complete
+                </a>
+            {% endif %}
+        </p>
+
+    {% empty %}
+
+        <p>No tasks yet.</p>
+
+    {% endfor %}
+
+</body>
+</html>
